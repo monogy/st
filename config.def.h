@@ -228,31 +228,6 @@ static char *copyurlcmd[] = { "/bin/sh", "-c",
     "externalpipe", NULL };
 static char *copyoutput[] = { "/bin/sh", "-c", "st-copyout", "externalpipe", NULL };
 
-// static Shortcut shortcuts[] = {
-	// [> mask                 keysym          function        argument <]
-	// { Mod1Mask|ControlMask, XK_l,           externalpipe,   {.v = openurlcmd } },
-	// { Mod1Mask,             XK_y,           externalpipe,   {.v = copyurlcmd } },
-	// { Mod1Mask,             XK_o,           externalpipe,   {.v = copyoutput } },
-	// { XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
-	// { ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
-	// { ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
-	// { XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	// { TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
-	// { TERMMOD,              XK_Next,        zoom,           {.f = -1} },
-	// { TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
-	// { TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
-	// { TERMMOD,              XK_V,           clippaste,      {.i =  0} },
-	// { TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
-	// { ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
-	// { TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	// { XK_NO_MOD,            XK_F11,         fullscreen,     {.i =  0} }, //add
-	// { MODKEY,               XK_Return,      fullscreen,     {.i =  0} },//add
-	// { MODKEY,               XK_o,           opencopied,     {.v = "xdg-open"} },//add
-	// { MODKEY,               XK_l,           copyurl,        {.i =  0} }, //add
-	// { ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	// { ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
-// };
-
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
 	{ Mod1Mask,             XK_l,           externalpipe,   {.v = openurlcmd } },
@@ -262,9 +237,11 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
-	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
-	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
+	// { TERMMOD,              XK_Prior,       zoom,           {.f = +1} },  //XK_Page_Up
+	// { TERMMOD,              XK_Next,        zoom,           {.f = -1} },  //XK_Page_Down
+	{ ControlMask,          XK_equal,       zoom,           {.f = +1} },
+	{ ControlMask,          XK_minus,       zoom,           {.f = -1} },
+	{ ControlMask,          XK_Home,        zoomreset,      {.f =  0} },
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
@@ -274,7 +251,7 @@ static Shortcut shortcuts[] = {
 	{ Mod4Mask,             XK_Down,        kscrolldown,    {.i =  1} },
 	{ Mod4Mask|ShiftMask,   XK_Up,          kscrollup,      {.i = -1} },
 	{ Mod4Mask|ShiftMask,   XK_Down,        kscrolldown,    {.i = -1} },
-  { MODKEY,               XK_l,           copyurl,        {.i =  0} },
+  { MODKEY|ShiftMask,     XK_l,           copyurl,        {.i =  0} },
   { MODKEY|ShiftMask,     XK_o,           opencopied,     {.v = "xdg-open"} },
 	{ XK_NO_MOD,            XK_F11,         fullscreen,     {.i =  0} },
 	{ MODKEY,               XK_Return,      fullscreen,     {.i =  0} },
